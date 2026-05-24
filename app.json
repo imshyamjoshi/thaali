@@ -43,6 +43,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "supabaseUrl": "",
+      "supabaseAnonKey": "",
+      "router": {},
+      "eas": {
+        "projectId": "f5816dfa-1b5e-472a-a0ee-33bbc99caa79"
+      }
     }
   }
 }
