@@ -2,7 +2,7 @@ import { getDatabase, getMetaValue, setMetaValue } from './database';
 import indianDishes from '../data/indian_dishes.json';
 import ingredients from '../data/ingredients.json';
 
-const SEED_VERSION = '2';
+const SEED_VERSION = '3';
 
 export async function seedDatabaseIfNeeded(): Promise<void> {
   const db = await getDatabase();
