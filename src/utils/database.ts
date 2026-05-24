@@ -80,6 +80,18 @@ async function initializeDatabase(database: SQLite.SQLiteDatabase): Promise<void
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     );
+
+    CREATE TABLE IF NOT EXISTS recent_ingredients (
+      ingredient_id TEXT PRIMARY KEY,
+      used_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS recipes (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      items TEXT NOT NULL,
+      created_at INTEGER NOT NULL
+    );
   `);
 }
 
@@ -208,6 +220,54 @@ function rowToIngredient(row: any): import('../types').Ingredient {
       saturated_fat: row.saturated_fat_per100g ?? 0,
     },
   };
+}
+
+export async function recordIngredientUsed(ingredientId: string): Promise<void> {
+  const database = await getDatabase();
+  const now = Date.now();
+  await database.runAsync(
+    `INSERT INTO recent_ingredients (ingredient_id, used_at) VALUES (?, ?)
+     ON CONFLICT(ingredient_id) DO UPDATE SET used_at = excluded.used_at`,
+    [ingredientId, now]
+  );
+  // Keep only 10 most recent
+  await database.runAsync(
+    `DELETE FROM recent_ingredients WHERE ingredient_id NOT IN (
+      SELECT ingredient_id FROM recent_ingredients ORDER BY used_at DESC LIMIT 10
+    )`
+  );
+}
+
+export async function getRecentIngredients(): Promise<import('../types').Ingredient[]> {
+  const database = await getDatabase();
+  const rows = await database.getAllAsync<any>(
+    `SELECT i.* FROM ingredients i
+     INNER JOIN recent_ingredients r ON i.id = r.ingredient_id
+     ORDER BY r.used_at DESC LIMIT 10`
+  );
+  return rows.map(rowToIngredient);
+}
+
+export async function saveRecipe(name: string, items: import('../types').RecipeItem[]): Promise<void> {
+  const database = await getDatabase();
+  const id = `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+  await database.runAsync(
+    `INSERT INTO recipes (id, name, items, created_at) VALUES (?, ?, ?, ?)`,
+    [id, name, JSON.stringify(items), Date.now()]
+  );
+}
+
+export async function getAllRecipes(): Promise<import('../types').SavedRecipe[]> {
+  const database = await getDatabase();
+  const rows = await database.getAllAsync<{ id: string; name: string; items: string }>(
+    'SELECT id, name, items FROM recipes ORDER BY created_at DESC'
+  );
+  return rows.map((r) => ({ id: r.id, name: r.name, items: JSON.parse(r.items) }));
+}
+
+export async function deleteRecipe(id: string): Promise<void> {
+  const database = await getDatabase();
+  await database.runAsync('DELETE FROM recipes WHERE id = ?', [id]);
 }
 
 function rowToEntry(row: any): DailyEntry {

@@ -8,12 +8,17 @@ import {
   Platform,
   Alert,
   ActivityIndicator,
+  Modal,
+  ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useState, useEffect, useCallback } from 'react';
-import { Ingredient } from '@/types';
-import { searchIngredients, insertEntry } from '@/utils/database';
+import { Ingredient, SavedRecipe } from '@/types';
+import {
+  searchIngredients, insertEntry, recordIngredientUsed,
+  getRecentIngredients, saveRecipe, getAllRecipes, deleteRecipe,
+} from '@/utils/database';
 import { useAppStore } from '@/store/useAppStore';
 
 interface SelectedItem {
@@ -81,6 +86,21 @@ export default function IngredientsScreen() {
   const [selected, setSelected] = useState<SelectedItem[]>([]);
   const [saving, setSaving] = useState(false);
 
+  const [recents, setRecents] = useState<Ingredient[]>([]);
+  const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([]);
+  const [recipeModalVisible, setRecipeModalVisible] = useState(false);
+  const [recipeName, setRecipeName] = useState('');
+  const [savingRecipe, setSavingRecipe] = useState(false);
+
+  useEffect(() => {
+    async function load() {
+      const [r, recs] = await Promise.all([getRecentIngredients(), getAllRecipes()]);
+      setRecents(r);
+      setSavedRecipes(recs);
+    }
+    load();
+  }, []);
+
   useEffect(() => {
     if (query.trim().length === 0) {
       setResults([]);
@@ -96,6 +116,7 @@ export default function IngredientsScreen() {
   }, [query]);
 
   const addIngredient = useCallback((ingredient: Ingredient) => {
+    recordIngredientUsed(ingredient.id);
     setSelected((prev) => [
       ...prev,
       {
@@ -115,6 +136,39 @@ export default function IngredientsScreen() {
   const removeItem = useCallback((index: number) => {
     setSelected((prev) => prev.filter((_, i) => i !== index));
   }, []);
+
+  function loadRecipe(recipe: SavedRecipe) {
+    setSelected(recipe.items as SelectedItem[]);
+  }
+
+  function confirmDeleteRecipe(recipe: SavedRecipe) {
+    Alert.alert('Delete Recipe', `Delete "${recipe.name}"?`, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
+          await deleteRecipe(recipe.id);
+          setSavedRecipes((prev) => prev.filter((r) => r.id !== recipe.id));
+        },
+      },
+    ]);
+  }
+
+  async function handleSaveRecipe() {
+    const name = recipeName.trim();
+    if (!name) {
+      Alert.alert('Name required', 'Enter a name for the recipe.');
+      return;
+    }
+    setSavingRecipe(true);
+    await saveRecipe(name, selected.map((s) => ({ ingredient: s.ingredient, grams: s.grams, useTabsp: s.useTabsp })));
+    const updated = await getAllRecipes();
+    setSavedRecipes(updated);
+    setSavingRecipe(false);
+    setRecipeModalVisible(false);
+    setRecipeName('');
+  }
 
   async function handleSave() {
     if (selected.length === 0) return;
@@ -238,14 +292,65 @@ export default function IngredientsScreen() {
             keyboardShouldPersistTaps="handled"
             contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 8 }}
             ListEmptyComponent={
-              <View className="flex-1 items-center justify-center py-16">
-                <Text className="text-5xl mb-4">🥘</Text>
-                <Text className="text-gray-500 text-center text-base">
-                  Search above to add ingredients
-                </Text>
-                <Text className="text-muted text-center text-sm mt-1">
-                  Mix and match to log a home-cooked meal
-                </Text>
+              <View>
+                {recents.length > 0 && (
+                  <View className="mb-6">
+                    <Text className="text-xs font-semibold uppercase tracking-widest text-muted mb-3">Recent</Text>
+                    <View className="gap-2">
+                      {recents.map((ing) => (
+                        <TouchableOpacity
+                          key={ing.id}
+                          className="bg-white rounded-2xl px-4 py-3 flex-row items-center justify-between"
+                          onPress={() => addIngredient(ing)}
+                          activeOpacity={0.75}
+                        >
+                          <Text className="text-gray-800 font-medium flex-1">{ing.name}</Text>
+                          <Text className="text-muted text-sm ml-3">{ing.per100g.calories} kcal/100g</Text>
+                        </TouchableOpacity>
+                      ))}
+                    </View>
+                  </View>
+                )}
+
+                {savedRecipes.length > 0 && (
+                  <View className="mb-6">
+                    <Text className="text-xs font-semibold uppercase tracking-widest text-muted mb-3">Saved Recipes</Text>
+                    <View className="gap-2">
+                      {savedRecipes.map((recipe) => (
+                        <View key={recipe.id} className="bg-white rounded-2xl px-4 py-3 flex-row items-center">
+                          <View className="flex-1">
+                            <Text className="text-gray-800 font-semibold">{recipe.name}</Text>
+                            <Text className="text-xs text-muted">
+                              {recipe.items.length} ingredient{recipe.items.length !== 1 ? 's' : ''}
+                            </Text>
+                          </View>
+                          <TouchableOpacity
+                            onPress={() => loadRecipe(recipe)}
+                            className="bg-primary rounded-xl px-3 py-1.5 mr-2"
+                            activeOpacity={0.8}
+                          >
+                            <Text className="text-white text-sm font-semibold">Load</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity onPress={() => confirmDeleteRecipe(recipe)} className="p-1">
+                            <Text className="text-red-400 text-xl font-light">×</Text>
+                          </TouchableOpacity>
+                        </View>
+                      ))}
+                    </View>
+                  </View>
+                )}
+
+                {recents.length === 0 && savedRecipes.length === 0 && (
+                  <View className="items-center justify-center py-16">
+                    <Text className="text-5xl mb-4">🥘</Text>
+                    <Text className="text-gray-500 text-center text-base">
+                      Search above to add ingredients
+                    </Text>
+                    <Text className="text-muted text-center text-sm mt-1">
+                      Mix and match to log a home-cooked meal
+                    </Text>
+                  </View>
+                )}
               </View>
             }
             renderItem={({ item, index }) => (
@@ -275,7 +380,7 @@ export default function IngredientsScreen() {
               <TotalChip label="Sat.Fat" value={`${totals.saturated_fat}g`} color="text-pink-600" />
             </View>
             <TouchableOpacity
-              className={`rounded-2xl py-4 items-center ${saving ? 'bg-orange-300' : 'bg-primary'}`}
+              className={`rounded-2xl py-4 items-center mb-2 ${saving ? 'bg-orange-300' : 'bg-primary'}`}
               onPress={handleSave}
               disabled={saving}
               activeOpacity={0.8}
@@ -286,9 +391,59 @@ export default function IngredientsScreen() {
                 <Text className="text-white font-bold text-base">Add to Today</Text>
               )}
             </TouchableOpacity>
+            <TouchableOpacity
+              className="py-1 items-center"
+              onPress={() => { setRecipeName(''); setRecipeModalVisible(true); }}
+            >
+              <Text className="text-primary text-sm font-medium">Save as Recipe</Text>
+            </TouchableOpacity>
           </View>
         )}
       </KeyboardAvoidingView>
+
+      {/* Recipe name modal */}
+      <Modal
+        visible={recipeModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setRecipeModalVisible(false)}
+      >
+        <View className="flex-1 bg-black/40 justify-center px-8">
+          <View className="bg-white rounded-3xl p-6">
+            <Text className="text-lg font-bold text-gray-800 mb-4">Save Recipe</Text>
+            <TextInput
+              className="border border-gray-200 rounded-2xl px-4 py-3 text-gray-800 mb-4"
+              placeholder="Recipe name…"
+              placeholderTextColor="#9CA3AF"
+              value={recipeName}
+              onChangeText={setRecipeName}
+              autoFocus
+              returnKeyType="done"
+              onSubmitEditing={handleSaveRecipe}
+            />
+            <View className="flex-row gap-3">
+              <TouchableOpacity
+                className="flex-1 border border-gray-200 rounded-2xl py-3 items-center"
+                onPress={() => setRecipeModalVisible(false)}
+              >
+                <Text className="text-gray-600 font-semibold">Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                className={`flex-1 rounded-2xl py-3 items-center ${savingRecipe ? 'bg-orange-300' : 'bg-primary'}`}
+                onPress={handleSaveRecipe}
+                disabled={savingRecipe}
+                activeOpacity={0.8}
+              >
+                {savingRecipe ? (
+                  <ActivityIndicator color="white" size="small" />
+                ) : (
+                  <Text className="text-white font-bold">Save</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }

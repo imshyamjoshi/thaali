@@ -67,6 +67,18 @@ export interface IndianDishServing {
   saturated_fat?: number;
 }
 
+export interface RecipeItem {
+  ingredient: Ingredient;
+  grams: string;
+  useTabsp: boolean;
+}
+
+export interface SavedRecipe {
+  id: string;
+  name: string;
+  items: RecipeItem[];
+}
+
 export interface IndianDish {
   id: string;
   name: string;

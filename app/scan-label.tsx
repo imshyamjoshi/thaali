@@ -83,13 +83,15 @@ export default function ScanLabelScreen() {
     setProcessing(true);
     setScreen('form');
 
-    // ─── OCR hook ────────────────────────────────────────────────────────────
-    // In a native build, replace this block with:
-    //   const text = await TextRecognition.recognize(uri);  // react-native-mlkit
-    //   const label = parseLabel(text);
-    // For Expo Go, OCR is skipped — user fills the form manually.
-    const label = EMPTY_LABEL;
-    // ─────────────────────────────────────────────────────────────────────────
+    let label: ParsedLabel = EMPTY_LABEL;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const TextRecognition = require('@react-native-ml-kit/text-recognition').default;
+      const result = await TextRecognition.recognize(uri);
+      label = parseLabel(result.text ?? '');
+    } catch {
+      // Expo Go or unsupported device — user fills in manually below
+    }
 
     setParsed(label);
     applyParsed(label, parseFloat(servings) || 1);
@@ -226,7 +228,7 @@ export default function ScanLabelScreen() {
           <View className="mx-5 mb-4 bg-blue-50 rounded-2xl px-4 py-3 flex-row items-center">
             <Text className="mr-2">ℹ️</Text>
             <Text className="text-sm text-blue-700 flex-1">
-              Photo saved for reference. Enter values from the label — OCR auto-fill needs a native build.
+              Couldn't read the label automatically. Enter the values below.
             </Text>
           </View>
         )}
