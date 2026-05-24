@@ -1,0 +1,545 @@
+[
+  {
+    "id": "dal_tadka",
+    "name": "Dal Tadka",
+    "category": "Dal",
+    "tags": ["vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small bowl (150ml)", "calories": 150, "protein": 7, "carbs": 22, "fat": 3, "sugar": 1, "fiber": 2, "sodium": 210, "saturated_fat": 1 },
+      { "label": "Medium bowl (250ml)", "calories": 220, "protein": 11, "carbs": 32, "fat": 5, "sugar": 2, "fiber": 4, "sodium": 350, "saturated_fat": 1 },
+      { "label": "Large bowl (400ml)", "calories": 360, "protein": 18, "carbs": 52, "fat": 8, "sugar": 3, "fiber": 6, "sodium": 560, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "dal_makhani",
+    "name": "Dal Makhani",
+    "category": "Dal",
+    "tags": ["vegetarian", "protein", "north-indian", "rich"],
+    "servings": [
+      { "label": "Small bowl (150ml)", "calories": 185, "protein": 7, "carbs": 20, "fat": 8, "sugar": 2, "fiber": 3, "sodium": 270, "saturated_fat": 3 },
+      { "label": "Medium bowl (250ml)", "calories": 310, "protein": 12, "carbs": 33, "fat": 14, "sugar": 3, "fiber": 5, "sodium": 450, "saturated_fat": 4 },
+      { "label": "Large bowl (400ml)", "calories": 496, "protein": 19, "carbs": 53, "fat": 22, "sugar": 5, "fiber": 8, "sodium": 720, "saturated_fat": 7 }
+    ]
+  },
+  {
+    "id": "moong_dal",
+    "name": "Moong Dal",
+    "category": "Dal",
+    "tags": ["vegetarian", "protein", "light"],
+    "servings": [
+      { "label": "Small bowl (150ml)", "calories": 100, "protein": 6, "carbs": 17, "fat": 1, "sugar": 1, "fiber": 2, "sodium": 180, "saturated_fat": 0 },
+      { "label": "Medium bowl (250ml)", "calories": 168, "protein": 10, "carbs": 28, "fat": 2, "sugar": 1, "fiber": 3, "sodium": 300, "saturated_fat": 0 },
+      { "label": "Large bowl (400ml)", "calories": 268, "protein": 16, "carbs": 45, "fat": 3, "sugar": 2, "fiber": 5, "sodium": 480, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "chana_dal",
+    "name": "Chana Dal",
+    "category": "Dal",
+    "tags": ["vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small bowl (150ml)", "calories": 145, "protein": 7, "carbs": 23, "fat": 3, "sugar": 1, "fiber": 3, "sodium": 190, "saturated_fat": 1 },
+      { "label": "Medium bowl (250ml)", "calories": 242, "protein": 12, "carbs": 38, "fat": 5, "sugar": 2, "fiber": 5, "sodium": 320, "saturated_fat": 1 },
+      { "label": "Large bowl (400ml)", "calories": 387, "protein": 19, "carbs": 61, "fat": 8, "sugar": 3, "fiber": 8, "sodium": 510, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "rajma",
+    "name": "Rajma",
+    "category": "Dal",
+    "tags": ["vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small bowl (150ml)", "calories": 165, "protein": 9, "carbs": 25, "fat": 3, "sugar": 1, "fiber": 4, "sodium": 230, "saturated_fat": 1 },
+      { "label": "Medium bowl (250ml)", "calories": 275, "protein": 15, "carbs": 42, "fat": 5, "sugar": 2, "fiber": 6, "sodium": 380, "saturated_fat": 1 },
+      { "label": "Large bowl (400ml)", "calories": 440, "protein": 24, "carbs": 67, "fat": 8, "sugar": 3, "fiber": 10, "sodium": 610, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "paneer_tikka_masala",
+    "name": "Paneer Tikka Masala",
+    "category": "Sabzi",
+    "tags": ["vegetarian", "protein", "north-indian", "rich"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 175, "protein": 9, "carbs": 8, "fat": 12, "sugar": 2, "fiber": 1, "sodium": 230, "saturated_fat": 4 },
+      { "label": "Medium (180g)", "calories": 315, "protein": 16, "carbs": 14, "fat": 22, "sugar": 4, "fiber": 2, "sodium": 380, "saturated_fat": 6 },
+      { "label": "Large (250g)", "calories": 437, "protein": 22, "carbs": 20, "fat": 30, "sugar": 5, "fiber": 3, "sodium": 530, "saturated_fat": 9 }
+    ]
+  },
+  {
+    "id": "palak_paneer",
+    "name": "Palak Paneer",
+    "category": "Sabzi",
+    "tags": ["vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 140, "protein": 7, "carbs": 6, "fat": 10, "sugar": 1, "fiber": 2, "sodium": 190, "saturated_fat": 3 },
+      { "label": "Medium (180g)", "calories": 252, "protein": 13, "carbs": 11, "fat": 18, "sugar": 2, "fiber": 3, "sodium": 320, "saturated_fat": 5 },
+      { "label": "Large (250g)", "calories": 350, "protein": 18, "carbs": 15, "fat": 25, "sugar": 3, "fiber": 4, "sodium": 450, "saturated_fat": 7 }
+    ]
+  },
+  {
+    "id": "aloo_gobi",
+    "name": "Aloo Gobi",
+    "category": "Sabzi",
+    "tags": ["vegetarian", "north-indian"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 90, "protein": 2, "carbs": 14, "fat": 3, "sugar": 2, "fiber": 2, "sodium": 170, "saturated_fat": 1 },
+      { "label": "Medium (180g)", "calories": 162, "protein": 4, "carbs": 25, "fat": 5, "sugar": 3, "fiber": 3, "sodium": 280, "saturated_fat": 1 },
+      { "label": "Large (250g)", "calories": 225, "protein": 6, "carbs": 35, "fat": 7, "sugar": 4, "fiber": 4, "sodium": 390, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "bhindi_masala",
+    "name": "Bhindi Masala",
+    "category": "Sabzi",
+    "tags": ["vegetarian", "north-indian"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 80, "protein": 2, "carbs": 9, "fat": 4, "sugar": 1, "fiber": 2, "sodium": 150, "saturated_fat": 1 },
+      { "label": "Medium (180g)", "calories": 144, "protein": 4, "carbs": 16, "fat": 7, "sugar": 2, "fiber": 4, "sodium": 250, "saturated_fat": 1 },
+      { "label": "Large (250g)", "calories": 200, "protein": 5, "carbs": 22, "fat": 10, "sugar": 3, "fiber": 6, "sodium": 350, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "matar_paneer",
+    "name": "Matar Paneer",
+    "category": "Sabzi",
+    "tags": ["vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 145, "protein": 7, "carbs": 10, "fat": 9, "sugar": 2, "fiber": 2, "sodium": 200, "saturated_fat": 2 },
+      { "label": "Medium (180g)", "calories": 261, "protein": 13, "carbs": 18, "fat": 16, "sugar": 3, "fiber": 3, "sodium": 340, "saturated_fat": 4 },
+      { "label": "Large (250g)", "calories": 362, "protein": 18, "carbs": 25, "fat": 22, "sugar": 4, "fiber": 4, "sodium": 470, "saturated_fat": 5 }
+    ]
+  },
+  {
+    "id": "plain_rice",
+    "name": "Plain Rice (Steamed)",
+    "category": "Rice",
+    "tags": ["vegetarian", "carbs"],
+    "servings": [
+      { "label": "Small bowl (100g cooked)", "calories": 130, "protein": 3, "carbs": 28, "fat": 0, "sugar": 0, "fiber": 0, "sodium": 3, "saturated_fat": 0 },
+      { "label": "Medium bowl (180g cooked)", "calories": 234, "protein": 5, "carbs": 50, "fat": 1, "sugar": 0, "fiber": 1, "sodium": 5, "saturated_fat": 0 },
+      { "label": "Large bowl (300g cooked)", "calories": 390, "protein": 8, "carbs": 84, "fat": 1, "sugar": 0, "fiber": 1, "sodium": 8, "saturated_fat": 0 }
+    ]
+  },
+  {
+    "id": "jeera_rice",
+    "name": "Jeera Rice",
+    "category": "Rice",
+    "tags": ["vegetarian", "carbs", "north-indian"],
+    "servings": [
+      { "label": "Small bowl (100g)", "calories": 150, "protein": 3, "carbs": 28, "fat": 3, "sugar": 0, "fiber": 0, "sodium": 90, "saturated_fat": 1 },
+      { "label": "Medium bowl (180g)", "calories": 270, "protein": 5, "carbs": 50, "fat": 6, "sugar": 0, "fiber": 1, "sodium": 150, "saturated_fat": 1 },
+      { "label": "Large bowl (300g)", "calories": 450, "protein": 8, "carbs": 83, "fat": 10, "sugar": 0, "fiber": 1, "sodium": 250, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "biryani_veg",
+    "name": "Veg Biryani",
+    "category": "Rice",
+    "tags": ["vegetarian", "carbs", "festive"],
+    "servings": [
+      { "label": "Small plate (150g)", "calories": 210, "protein": 4, "carbs": 38, "fat": 5, "sugar": 2, "fiber": 1, "sodium": 230, "saturated_fat": 1 },
+      { "label": "Medium plate (250g)", "calories": 350, "protein": 7, "carbs": 63, "fat": 8, "sugar": 3, "fiber": 2, "sodium": 380, "saturated_fat": 2 },
+      { "label": "Large plate (400g)", "calories": 560, "protein": 11, "carbs": 101, "fat": 13, "sugar": 5, "fiber": 3, "sodium": 610, "saturated_fat": 3 }
+    ]
+  },
+  {
+    "id": "biryani_chicken",
+    "name": "Chicken Biryani",
+    "category": "Rice",
+    "tags": ["non-vegetarian", "protein", "festive"],
+    "servings": [
+      { "label": "Small plate (200g)", "calories": 290, "protein": 15, "carbs": 38, "fat": 8, "sugar": 1, "fiber": 1, "sodium": 300, "saturated_fat": 2 },
+      { "label": "Medium plate (350g)", "calories": 508, "protein": 26, "carbs": 67, "fat": 14, "sugar": 2, "fiber": 2, "sodium": 420, "saturated_fat": 3 },
+      { "label": "Large plate (500g)", "calories": 725, "protein": 37, "carbs": 95, "fat": 20, "sugar": 3, "fiber": 3, "sodium": 600, "saturated_fat": 4 }
+    ]
+  },
+  {
+    "id": "khichdi",
+    "name": "Khichdi",
+    "category": "Rice",
+    "tags": ["vegetarian", "light", "comfort"],
+    "servings": [
+      { "label": "Small bowl (150g)", "calories": 155, "protein": 5, "carbs": 28, "fat": 3, "sugar": 1, "fiber": 2, "sodium": 180, "saturated_fat": 1 },
+      { "label": "Medium bowl (250g)", "calories": 258, "protein": 9, "carbs": 47, "fat": 5, "sugar": 1, "fiber": 3, "sodium": 300, "saturated_fat": 1 },
+      { "label": "Large bowl (400g)", "calories": 413, "protein": 14, "carbs": 75, "fat": 8, "sugar": 2, "fiber": 5, "sodium": 480, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "roti",
+    "name": "Roti / Chapati",
+    "category": "Bread",
+    "tags": ["vegetarian", "carbs"],
+    "servings": [
+      { "label": "1 roti (30g)", "calories": 80, "protein": 3, "carbs": 15, "fat": 1, "sugar": 0, "fiber": 1, "sodium": 60, "saturated_fat": 0 },
+      { "label": "2 rotis (60g)", "calories": 160, "protein": 6, "carbs": 30, "fat": 2, "sugar": 0, "fiber": 2, "sodium": 100, "saturated_fat": 0 },
+      { "label": "3 rotis (90g)", "calories": 240, "protein": 9, "carbs": 45, "fat": 3, "sugar": 0, "fiber": 3, "sodium": 160, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "paratha_plain",
+    "name": "Plain Paratha",
+    "category": "Bread",
+    "tags": ["vegetarian", "carbs"],
+    "servings": [
+      { "label": "1 paratha (60g)", "calories": 190, "protein": 4, "carbs": 25, "fat": 8, "sugar": 0, "fiber": 1, "sodium": 120, "saturated_fat": 2 },
+      { "label": "2 parathas (120g)", "calories": 380, "protein": 8, "carbs": 50, "fat": 16, "sugar": 0, "fiber": 2, "sodium": 200, "saturated_fat": 4 },
+      { "label": "3 parathas (180g)", "calories": 570, "protein": 12, "carbs": 75, "fat": 24, "sugar": 0, "fiber": 3, "sodium": 300, "saturated_fat": 6 }
+    ]
+  },
+  {
+    "id": "paratha_aloo",
+    "name": "Aloo Paratha",
+    "category": "Bread",
+    "tags": ["vegetarian", "carbs", "north-indian"],
+    "servings": [
+      { "label": "1 paratha (100g)", "calories": 250, "protein": 5, "carbs": 35, "fat": 10, "sugar": 1, "fiber": 2, "sodium": 180, "saturated_fat": 3 },
+      { "label": "2 parathas (200g)", "calories": 500, "protein": 10, "carbs": 70, "fat": 20, "sugar": 1, "fiber": 3, "sodium": 280, "saturated_fat": 5 },
+      { "label": "3 parathas (300g)", "calories": 750, "protein": 15, "carbs": 105, "fat": 30, "sugar": 2, "fiber": 5, "sodium": 420, "saturated_fat": 8 }
+    ]
+  },
+  {
+    "id": "puri",
+    "name": "Puri",
+    "category": "Bread",
+    "tags": ["vegetarian", "carbs", "fried"],
+    "servings": [
+      { "label": "2 puris (50g)", "calories": 175, "protein": 3, "carbs": 22, "fat": 8, "sugar": 0, "fiber": 1, "sodium": 100, "saturated_fat": 2 },
+      { "label": "4 puris (100g)", "calories": 350, "protein": 6, "carbs": 44, "fat": 16, "sugar": 0, "fiber": 1, "sodium": 150, "saturated_fat": 3 },
+      { "label": "6 puris (150g)", "calories": 525, "protein": 9, "carbs": 66, "fat": 24, "sugar": 0, "fiber": 2, "sodium": 230, "saturated_fat": 5 }
+    ]
+  },
+  {
+    "id": "naan",
+    "name": "Naan",
+    "category": "Bread",
+    "tags": ["vegetarian", "carbs", "north-indian"],
+    "servings": [
+      { "label": "1 naan (90g)", "calories": 260, "protein": 7, "carbs": 44, "fat": 6, "sugar": 2, "fiber": 2, "sodium": 350, "saturated_fat": 2 },
+      { "label": "2 naans (180g)", "calories": 520, "protein": 14, "carbs": 88, "fat": 12, "sugar": 4, "fiber": 3, "sodium": 700, "saturated_fat": 3 }
+    ]
+  },
+  {
+    "id": "pav_bhaji",
+    "name": "Pav Bhaji",
+    "category": "Street Food",
+    "tags": ["vegetarian", "street-food", "west-indian"],
+    "servings": [
+      { "label": "1 plate (2 pav + bhaji)", "calories": 450, "protein": 9, "carbs": 68, "fat": 15, "sugar": 5, "fiber": 6, "sodium": 800, "saturated_fat": 4 },
+      { "label": "Half plate (1 pav + bhaji)", "calories": 250, "protein": 5, "carbs": 37, "fat": 9, "sugar": 3, "fiber": 3, "sodium": 450, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "chole",
+    "name": "Chole (Chana Masala)",
+    "category": "Street Food",
+    "tags": ["vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small bowl (150ml)", "calories": 165, "protein": 8, "carbs": 25, "fat": 4, "sugar": 2, "fiber": 5, "sodium": 270, "saturated_fat": 1 },
+      { "label": "Medium bowl (250ml)", "calories": 275, "protein": 13, "carbs": 42, "fat": 7, "sugar": 3, "fiber": 8, "sodium": 450, "saturated_fat": 1 },
+      { "label": "Large bowl (400ml)", "calories": 440, "protein": 21, "carbs": 67, "fat": 11, "sugar": 5, "fiber": 13, "sodium": 720, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "samosa",
+    "name": "Samosa",
+    "category": "Street Food",
+    "tags": ["vegetarian", "fried", "snack"],
+    "servings": [
+      { "label": "1 samosa (80g)", "calories": 200, "protein": 3, "carbs": 25, "fat": 10, "sugar": 1, "fiber": 1, "sodium": 180, "saturated_fat": 1 },
+      { "label": "2 samosas (160g)", "calories": 400, "protein": 6, "carbs": 50, "fat": 20, "sugar": 2, "fiber": 2, "sodium": 300, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "vada_pav",
+    "name": "Vada Pav",
+    "category": "Street Food",
+    "tags": ["vegetarian", "street-food", "west-indian"],
+    "servings": [
+      { "label": "1 vada pav", "calories": 290, "protein": 5, "carbs": 42, "fat": 10, "sugar": 3, "fiber": 2, "sodium": 450, "saturated_fat": 2 },
+      { "label": "2 vada pav", "calories": 580, "protein": 10, "carbs": 84, "fat": 20, "sugar": 6, "fiber": 4, "sodium": 900, "saturated_fat": 4 }
+    ]
+  },
+  {
+    "id": "bhel_puri",
+    "name": "Bhel Puri",
+    "category": "Street Food",
+    "tags": ["vegetarian", "snack", "west-indian"],
+    "servings": [
+      { "label": "1 cup (100g)", "calories": 150, "protein": 3, "carbs": 28, "fat": 3, "sugar": 4, "fiber": 2, "sodium": 280, "saturated_fat": 0 },
+      { "label": "Large plate (200g)", "calories": 300, "protein": 6, "carbs": 56, "fat": 6, "sugar": 8, "fiber": 4, "sodium": 560, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "poha",
+    "name": "Poha",
+    "category": "Snacks",
+    "tags": ["vegetarian", "breakfast", "light"],
+    "servings": [
+      { "label": "Small plate (100g)", "calories": 130, "protein": 3, "carbs": 24, "fat": 3, "sugar": 1, "fiber": 1, "sodium": 150, "saturated_fat": 1 },
+      { "label": "Medium plate (180g)", "calories": 234, "protein": 5, "carbs": 43, "fat": 5, "sugar": 2, "fiber": 2, "sodium": 250, "saturated_fat": 1 },
+      { "label": "Large plate (250g)", "calories": 325, "protein": 7, "carbs": 60, "fat": 7, "sugar": 3, "fiber": 2, "sodium": 350, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "upma",
+    "name": "Upma",
+    "category": "Snacks",
+    "tags": ["vegetarian", "breakfast", "south-indian"],
+    "servings": [
+      { "label": "Small plate (150g)", "calories": 175, "protein": 4, "carbs": 28, "fat": 5, "sugar": 1, "fiber": 1, "sodium": 200, "saturated_fat": 1 },
+      { "label": "Medium plate (250g)", "calories": 292, "protein": 7, "carbs": 47, "fat": 8, "sugar": 1, "fiber": 2, "sodium": 350, "saturated_fat": 1 },
+      { "label": "Large plate (350g)", "calories": 408, "protein": 10, "carbs": 66, "fat": 11, "sugar": 2, "fiber": 3, "sodium": 490, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "idli",
+    "name": "Idli",
+    "category": "Snacks",
+    "tags": ["vegetarian", "breakfast", "south-indian", "light"],
+    "servings": [
+      { "label": "2 idlis (100g)", "calories": 130, "protein": 4, "carbs": 26, "fat": 1, "sugar": 0, "fiber": 1, "sodium": 180, "saturated_fat": 0 },
+      { "label": "4 idlis (200g)", "calories": 260, "protein": 8, "carbs": 52, "fat": 2, "sugar": 0, "fiber": 2, "sodium": 300, "saturated_fat": 0 },
+      { "label": "6 idlis (300g)", "calories": 390, "protein": 12, "carbs": 78, "fat": 3, "sugar": 0, "fiber": 3, "sodium": 480, "saturated_fat": 0 }
+    ]
+  },
+  {
+    "id": "dosa_plain",
+    "name": "Plain Dosa",
+    "category": "Snacks",
+    "tags": ["vegetarian", "breakfast", "south-indian"],
+    "servings": [
+      { "label": "1 dosa (100g)", "calories": 170, "protein": 4, "carbs": 30, "fat": 4, "sugar": 0, "fiber": 1, "sodium": 180, "saturated_fat": 0 },
+      { "label": "2 dosas (200g)", "calories": 340, "protein": 8, "carbs": 60, "fat": 8, "sugar": 0, "fiber": 2, "sodium": 280, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "dosa_masala",
+    "name": "Masala Dosa",
+    "category": "Snacks",
+    "tags": ["vegetarian", "breakfast", "south-indian"],
+    "servings": [
+      { "label": "1 masala dosa (180g)", "calories": 280, "protein": 6, "carbs": 46, "fat": 8, "sugar": 1, "fiber": 2, "sodium": 350, "saturated_fat": 1 },
+      { "label": "2 masala dosas (360g)", "calories": 560, "protein": 12, "carbs": 92, "fat": 16, "sugar": 2, "fiber": 4, "sodium": 700, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "uttapam",
+    "name": "Uttapam",
+    "category": "Snacks",
+    "tags": ["vegetarian", "breakfast", "south-indian"],
+    "servings": [
+      { "label": "1 uttapam (120g)", "calories": 200, "protein": 5, "carbs": 34, "fat": 5, "sugar": 1, "fiber": 2, "sodium": 280, "saturated_fat": 1 },
+      { "label": "2 uttapams (240g)", "calories": 400, "protein": 10, "carbs": 68, "fat": 10, "sugar": 2, "fiber": 4, "sodium": 560, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "egg_curry",
+    "name": "Egg Curry",
+    "category": "Proteins",
+    "tags": ["non-vegetarian", "protein"],
+    "servings": [
+      { "label": "1 egg + gravy (130g)", "calories": 175, "protein": 9, "carbs": 5, "fat": 13, "sugar": 1, "fiber": 1, "sodium": 230, "saturated_fat": 3 },
+      { "label": "2 eggs + gravy (220g)", "calories": 300, "protein": 16, "carbs": 8, "fat": 22, "sugar": 2, "fiber": 1, "sodium": 380, "saturated_fat": 4 },
+      { "label": "3 eggs + gravy (320g)", "calories": 430, "protein": 24, "carbs": 12, "fat": 31, "sugar": 3, "fiber": 2, "sodium": 550, "saturated_fat": 6 }
+    ]
+  },
+  {
+    "id": "chicken_curry",
+    "name": "Chicken Curry",
+    "category": "Proteins",
+    "tags": ["non-vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small (150g)", "calories": 200, "protein": 18, "carbs": 5, "fat": 12, "sugar": 2, "fiber": 1, "sodium": 270, "saturated_fat": 3 },
+      { "label": "Medium (250g)", "calories": 333, "protein": 30, "carbs": 8, "fat": 20, "sugar": 3, "fiber": 1, "sodium": 450, "saturated_fat": 4 },
+      { "label": "Large (350g)", "calories": 467, "protein": 42, "carbs": 11, "fat": 28, "sugar": 4, "fiber": 2, "sodium": 630, "saturated_fat": 6 }
+    ]
+  },
+  {
+    "id": "butter_chicken",
+    "name": "Butter Chicken",
+    "category": "Proteins",
+    "tags": ["non-vegetarian", "protein", "north-indian", "rich"],
+    "servings": [
+      { "label": "Small (150g)", "calories": 235, "protein": 17, "carbs": 8, "fat": 15, "sugar": 3, "fiber": 1, "sodium": 300, "saturated_fat": 5 },
+      { "label": "Medium (250g)", "calories": 392, "protein": 28, "carbs": 13, "fat": 25, "sugar": 5, "fiber": 1, "sodium": 500, "saturated_fat": 8 },
+      { "label": "Large (350g)", "calories": 548, "protein": 39, "carbs": 18, "fat": 35, "sugar": 7, "fiber": 2, "sodium": 700, "saturated_fat": 11 }
+    ]
+  },
+  {
+    "id": "fish_curry",
+    "name": "Fish Curry",
+    "category": "Proteins",
+    "tags": ["non-vegetarian", "protein", "coastal"],
+    "servings": [
+      { "label": "Small (150g)", "calories": 170, "protein": 18, "carbs": 5, "fat": 8, "sugar": 1, "fiber": 1, "sodium": 320, "saturated_fat": 1 },
+      { "label": "Medium (250g)", "calories": 283, "protein": 30, "carbs": 8, "fat": 13, "sugar": 2, "fiber": 1, "sodium": 400, "saturated_fat": 2 },
+      { "label": "Large (350g)", "calories": 397, "protein": 42, "carbs": 11, "fat": 18, "sugar": 3, "fiber": 2, "sodium": 560, "saturated_fat": 3 }
+    ]
+  },
+  {
+    "id": "kheer",
+    "name": "Kheer",
+    "category": "Sweets",
+    "tags": ["vegetarian", "sweet", "dessert"],
+    "servings": [
+      { "label": "Small bowl (100ml)", "calories": 145, "protein": 4, "carbs": 22, "fat": 5, "sugar": 12, "fiber": 0, "sodium": 50, "saturated_fat": 2 },
+      { "label": "Medium bowl (200ml)", "calories": 290, "protein": 8, "carbs": 44, "fat": 10, "sugar": 22, "fiber": 0, "sodium": 80, "saturated_fat": 4 }
+    ]
+  },
+  {
+    "id": "gulab_jamun",
+    "name": "Gulab Jamun",
+    "category": "Sweets",
+    "tags": ["vegetarian", "sweet", "dessert"],
+    "servings": [
+      { "label": "1 piece (40g)", "calories": 140, "protein": 2, "carbs": 24, "fat": 4, "sugar": 15, "fiber": 0, "sodium": 60, "saturated_fat": 1 },
+      { "label": "2 pieces (80g)", "calories": 280, "protein": 4, "carbs": 48, "fat": 8, "sugar": 28, "fiber": 0, "sodium": 100, "saturated_fat": 3 }
+    ]
+  },
+  {
+    "id": "ladoo",
+    "name": "Besan Ladoo",
+    "category": "Sweets",
+    "tags": ["vegetarian", "sweet", "dessert"],
+    "servings": [
+      { "label": "1 ladoo (40g)", "calories": 175, "protein": 3, "carbs": 20, "fat": 9, "sugar": 9, "fiber": 1, "sodium": 20, "saturated_fat": 3 },
+      { "label": "2 ladoos (80g)", "calories": 350, "protein": 6, "carbs": 40, "fat": 18, "sugar": 18, "fiber": 1, "sodium": 30, "saturated_fat": 5 }
+    ]
+  },
+  {
+    "id": "halwa",
+    "name": "Halwa (Sooji/Atta)",
+    "category": "Sweets",
+    "tags": ["vegetarian", "sweet", "dessert"],
+    "servings": [
+      { "label": "Small serve (100g)", "calories": 220, "protein": 3, "carbs": 30, "fat": 10, "sugar": 12, "fiber": 1, "sodium": 30, "saturated_fat": 3 },
+      { "label": "Medium serve (200g)", "calories": 440, "protein": 6, "carbs": 60, "fat": 20, "sugar": 22, "fiber": 1, "sodium": 50, "saturated_fat": 5 }
+    ]
+  },
+  {
+    "id": "chai",
+    "name": "Masala Chai (with milk)",
+    "category": "Beverages",
+    "tags": ["vegetarian", "hot-drink"],
+    "servings": [
+      { "label": "1 cup (150ml)", "calories": 60, "protein": 2, "carbs": 8, "fat": 2, "sugar": 6, "fiber": 0, "sodium": 40, "saturated_fat": 1 },
+      { "label": "Large mug (250ml)", "calories": 100, "protein": 3, "carbs": 13, "fat": 3, "sugar": 9, "fiber": 0, "sodium": 65, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "lassi_sweet",
+    "name": "Sweet Lassi",
+    "category": "Beverages",
+    "tags": ["vegetarian", "cold-drink"],
+    "servings": [
+      { "label": "1 glass (250ml)", "calories": 180, "protein": 6, "carbs": 28, "fat": 5, "sugar": 18, "fiber": 0, "sodium": 80, "saturated_fat": 2 },
+      { "label": "Large glass (400ml)", "calories": 288, "protein": 10, "carbs": 45, "fat": 8, "sugar": 28, "fiber": 0, "sodium": 130, "saturated_fat": 3 }
+    ]
+  },
+  {
+    "id": "buttermilk",
+    "name": "Buttermilk (Chaas)",
+    "category": "Beverages",
+    "tags": ["vegetarian", "cold-drink", "light"],
+    "servings": [
+      { "label": "1 glass (250ml)", "calories": 50, "protein": 3, "carbs": 5, "fat": 1, "sugar": 5, "fiber": 0, "sodium": 80, "saturated_fat": 0 },
+      { "label": "Large glass (400ml)", "calories": 80, "protein": 5, "carbs": 8, "fat": 2, "sugar": 7, "fiber": 0, "sodium": 130, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "curd_yogurt",
+    "name": "Curd / Dahi",
+    "category": "Beverages",
+    "tags": ["vegetarian", "probiotic"],
+    "servings": [
+      { "label": "Small bowl (100g)", "calories": 62, "protein": 4, "carbs": 5, "fat": 3, "sugar": 4, "fiber": 0, "sodium": 36, "saturated_fat": 1 },
+      { "label": "Medium bowl (200g)", "calories": 124, "protein": 8, "carbs": 10, "fat": 6, "sugar": 7, "fiber": 0, "sodium": 50, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "raita",
+    "name": "Boondi Raita",
+    "category": "Beverages",
+    "tags": ["vegetarian", "side"],
+    "servings": [
+      { "label": "Small bowl (100g)", "calories": 90, "protein": 4, "carbs": 10, "fat": 4, "sugar": 4, "fiber": 0, "sodium": 100, "saturated_fat": 1 },
+      { "label": "Medium bowl (200g)", "calories": 180, "protein": 8, "carbs": 20, "fat": 8, "sugar": 7, "fiber": 0, "sodium": 150, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "aloo_sabzi",
+    "name": "Aloo Sabzi (Dry)",
+    "category": "Sabzi",
+    "tags": ["vegetarian", "north-indian"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 110, "protein": 2, "carbs": 18, "fat": 4, "sugar": 1, "fiber": 1, "sodium": 170, "saturated_fat": 1 },
+      { "label": "Medium (180g)", "calories": 198, "protein": 4, "carbs": 32, "fat": 7, "sugar": 2, "fiber": 2, "sodium": 280, "saturated_fat": 1 },
+      { "label": "Large (250g)", "calories": 275, "protein": 5, "carbs": 45, "fat": 10, "sugar": 3, "fiber": 3, "sodium": 390, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "mix_veg",
+    "name": "Mix Veg",
+    "category": "Sabzi",
+    "tags": ["vegetarian", "north-indian"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 95, "protein": 3, "carbs": 12, "fat": 4, "sugar": 2, "fiber": 2, "sodium": 180, "saturated_fat": 1 },
+      { "label": "Medium (180g)", "calories": 171, "protein": 5, "carbs": 22, "fat": 7, "sugar": 3, "fiber": 3, "sodium": 300, "saturated_fat": 1 },
+      { "label": "Large (250g)", "calories": 237, "protein": 7, "carbs": 30, "fat": 10, "sugar": 4, "fiber": 4, "sodium": 420, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "sambhar",
+    "name": "Sambhar",
+    "category": "Dal",
+    "tags": ["vegetarian", "protein", "south-indian"],
+    "servings": [
+      { "label": "Small bowl (150ml)", "calories": 90, "protein": 4, "carbs": 14, "fat": 2, "sugar": 2, "fiber": 2, "sodium": 240, "saturated_fat": 0 },
+      { "label": "Medium bowl (250ml)", "calories": 150, "protein": 7, "carbs": 23, "fat": 3, "sugar": 3, "fiber": 4, "sodium": 400, "saturated_fat": 0 },
+      { "label": "Large bowl (400ml)", "calories": 240, "protein": 11, "carbs": 37, "fat": 5, "sugar": 5, "fiber": 6, "sodium": 640, "saturated_fat": 1 }
+    ]
+  },
+  {
+    "id": "rasam",
+    "name": "Rasam",
+    "category": "Dal",
+    "tags": ["vegetarian", "south-indian", "light"],
+    "servings": [
+      { "label": "1 cup (200ml)", "calories": 40, "protein": 1, "carbs": 7, "fat": 1, "sugar": 1, "fiber": 1, "sodium": 170, "saturated_fat": 0 },
+      { "label": "2 cups (400ml)", "calories": 80, "protein": 2, "carbs": 14, "fat": 2, "sugar": 2, "fiber": 2, "sodium": 340, "saturated_fat": 0 }
+    ]
+  },
+  {
+    "id": "pulao",
+    "name": "Veg Pulao",
+    "category": "Rice",
+    "tags": ["vegetarian", "carbs"],
+    "servings": [
+      { "label": "Small plate (150g)", "calories": 195, "protein": 4, "carbs": 35, "fat": 5, "sugar": 1, "fiber": 1, "sodium": 190, "saturated_fat": 1 },
+      { "label": "Medium plate (250g)", "calories": 325, "protein": 7, "carbs": 58, "fat": 8, "sugar": 2, "fiber": 2, "sodium": 320, "saturated_fat": 1 },
+      { "label": "Large plate (400g)", "calories": 520, "protein": 11, "carbs": 93, "fat": 13, "sugar": 3, "fiber": 3, "sodium": 510, "saturated_fat": 2 }
+    ]
+  },
+  {
+    "id": "boiled_egg",
+    "name": "Boiled Egg",
+    "category": "Proteins",
+    "tags": ["non-vegetarian", "protein", "simple"],
+    "servings": [
+      { "label": "1 egg (50g)", "calories": 78, "protein": 6, "carbs": 1, "fat": 5, "sugar": 0, "fiber": 0, "sodium": 70, "saturated_fat": 1 },
+      { "label": "2 eggs (100g)", "calories": 156, "protein": 12, "carbs": 2, "fat": 10, "sugar": 0, "fiber": 0, "sodium": 140, "saturated_fat": 2 },
+      { "label": "3 eggs (150g)", "calories": 234, "protein": 18, "carbs": 3, "fat": 15, "sugar": 0, "fiber": 0, "sodium": 210, "saturated_fat": 3 }
+    ]
+  },
+  {
+    "id": "paneer_bhurji",
+    "name": "Paneer Bhurji",
+    "category": "Proteins",
+    "tags": ["vegetarian", "protein", "north-indian"],
+    "servings": [
+      { "label": "Small (100g)", "calories": 190, "protein": 11, "carbs": 5, "fat": 14, "sugar": 1, "fiber": 1, "sodium": 210, "saturated_fat": 5 },
+      { "label": "Medium (180g)", "calories": 342, "protein": 20, "carbs": 9, "fat": 25, "sugar": 2, "fiber": 1, "sodium": 350, "saturated_fat": 8 },
+      { "label": "Large (250g)", "calories": 475, "protein": 28, "carbs": 12, "fat": 35, "sugar": 3, "fiber": 2, "sodium": 490, "saturated_fat": 11 }
+    ]
+  }
+]
