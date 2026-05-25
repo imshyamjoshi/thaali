@@ -83,15 +83,7 @@ export default function ScanLabelScreen() {
     setProcessing(true);
     setScreen('form');
 
-    let label: ParsedLabel = EMPTY_LABEL;
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const TextRecognition = require('@react-native-ml-kit/text-recognition').default;
-      const result = await TextRecognition.recognize(uri);
-      label = parseLabel(result.text ?? '');
-    } catch {
-      // Expo Go or unsupported device — user fills in manually below
-    }
+    const label = EMPTY_LABEL;
 
     setParsed(label);
     applyParsed(label, parseFloat(servings) || 1);
