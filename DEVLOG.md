@@ -21,6 +21,67 @@ This file is committed with every PR. It becomes the project memory.
 
 ---
 
+### 2026-06-17 — Standalone release APK green (full build saga closed)
+**Commit**: `(uncommitted)`
+**Phase**: Phase 8 — Build stabilization + on-device OCR (continued)
+
+**Context**: After the debug APK succeeded (entry below), built a standalone **release** APK (`assembleRelease`) so the app runs with no Metro/`expo start`. Release bundles + Hermes-compiles all JS up front, which surfaced two issues debug had hidden.
+
+**What was built / fixed**:
+- **Re-added `react-native-reanimated@~4.1.1`** — this *corrects* the earlier-today claim that it was an unused orphan. It IS required: NativeWind's runtime hard-requires it (`react-native-css-interop/dist/runtime/native/native-interop.js` → `require("react-native-reanimated")`, loaded by every component via `app/_layout.tsx`). Debug bundles lazily so it slipped through; the release bundle caught it. reanimated 4.x needs New Arch — now consistent since New Arch is enabled.
+- **Hermes/OTEL fix:** release bundling failed at `index.android.bundle … Invalid expression encountered` on `@supabase/supabase-js`'s optional OpenTelemetry loader `import(/* webpackIgnore */ OTEL_PKG)` (present in BOTH its cjs and mjs builds, so package-exports tricks don't help). Added `babel-plugin-strip-dynamic-import.js` (wired into `babel.config.js` `plugins`) — neutralizes dynamic `import()` whose argument isn't a static string literal (Hermes can't run those anyway; the OTEL loader is wrapped in `.catch()`). Static `import('./x')` left intact for Metro.
+
+**Build verification**:
+- `gradlew assembleRelease` (ANDROID_HOME → default SDK, JDK 17) — **BUILD SUCCESSFUL**. Output: `android/app/build/outputs/apk/release/app-release.apk` (~107.6 MB, minified, standalone — no dev server needed).
+- Debug APK also confirmed (entry below).
+
+**Coherent final dependency picture** (supersedes "removed reanimated / newArch false" notes in the entry below):
+- `newArchEnabled: true` (REQUIRED) · keep `react-native-worklets` (NativeWind babel) · keep `react-native-reanimated` (NativeWind runtime) · `expo-text-extractor` for OCR · babel strip-dynamic-import plugin for the Supabase OTEL/Hermes clash.
+
+**Next**:
+- Install `app-release.apk` (`adb install -r …`) and test Scan Label on a real nutrition panel.
+- Commit working-tree changes if keeping the RN app.
+- NOTE: project is being **rebuilt in Flutter** — see `D:\AI_Projects\thaali-flutter\` (FINDINGS.md captures these build lessons for the rebuild).
+
+---
+
+### 2026-06-17 — OCR rewired + Android build unblocked
+**Commit**: `(uncommitted)`
+**Phase**: Phase 8 — Build stabilization + on-device OCR
+
+**Context**: Prior sessions (commits `908b0ee`→`f585332`, not logged here) hit repeated Android EAS Build failures. Two root causes: (1) `@react-native-ml-kit/text-recognition` is a bare-RN lib incompatible with the managed workflow (Gradle errors); (2) `react-native-reanimated` 4.x C++/NDK compile failures. The OCR lib was stripped out to get a build through, which left Scan Label as a stub (photo → `EMPTY_LABEL`, no text recognition).
+
+**What was built**:
+- Removed `react-native-reanimated` entirely — confirmed unused in all source (only a NativeWind transitive dep). Kills the NDK build failure.
+- Reverted `babel.config.js` to the known-good config: `babel-preset-expo` with `worklets: false`, empty `plugins`.
+- Swapped OCR to **`expo-text-extractor@2.0.0`** — a proper Expo module (ML Kit on Android, Apple Vision on iOS) that autolinks via EAS, no Gradle hand-wiring.
+- Wired real OCR in `app/scan-label.tsx`: photo URI → `extractTextFromImage()` → `parseLabel(lines.join('\n'))` → existing FSSAI regex parser. Replaced the `EMPTY_LABEL` stub.
+- Fixed pre-existing SDK 54 break: `expo-file-system` `documentDirectory`/`copyAsync` moved to `/legacy` — updated the import so entry-image persistence compiles again.
+- Corrected `expo-build-properties` from a bogus `^56.0.14` to SDK-correct `~1.0.10`.
+- Added `expo-dev-client@~6.0.21` (required for development builds).
+- `npx tsc --noEmit` passes clean.
+
+**Decisions made**:
+- Chose `expo-text-extractor` over retrying `@react-native-ml-kit` or adopting `react-native-vision-camera` — it's the lightest managed-workflow fit and exposes a simple `extractTextFromImage(uri): Promise<string[]>` API matching the existing parser.
+- OCR fills only calories/protein/carbs/fat (what the regex parser extracts); sugar/fiber/sodium/sat-fat stay manual entry.
+- Kept `newArchEnabled: false` and the Android SDK 35 pin via `expo-build-properties`.
+
+**Blockers / issues hit**:
+- First dev build failed fast: `expo-dev-client` not installed. Added it (`~6.0.21`) and retried.
+- **Root cause of the whole build saga, finally found:** `react-native-worklets` (pulled into the build via NativeWind's babel chain — `react-native-css-interop/babel.js` line 13 unconditionally loads `react-native-worklets/plugin`) has an `assertNewArchitectureEnabledTask` that FAILS when `newArchEnabled=false`. New Arch had been disabled (`908b0ee`) for the old `@react-native-ml-kit` lib, which is now gone. So worklets (required by NativeWind babel) and `newArchEnabled:false` were mutually exclusive — every build hit this wall.
+- Fix: set `newArchEnabled: true` in `app.json` (also the SDK 54 default). Can't remove worklets — NativeWind's babel needs it.
+
+**Build verification**:
+- Local Gradle build (`gradlew assembleDebug`, ANDROID_HOME → default SDK, JDK 17) — **BUILD SUCCESSFUL in 23m 20s**. Output: `android/app/build/outputs/apk/debug/app-debug.apk` (~176 MB, debug = includes dev client).
+- Parallel EAS cloud build errored at the same Gradle assertion before the fix (expected).
+- `expo-text-extractor` autolinked cleanly; NDK 27.1 + build-tools 35 auto-installed.
+
+**Next**:
+- Install `app-debug.apk` on an Android device (or emulator), run `npx expo start`, open via the dev build (NOT Expo Go — native OCR module). Test Scan Label on a real nutrition panel → should auto-fill calories/protein/carbs/fat.
+- Then commit the working-tree changes.
+
+---
+
 ### 2026-05-24 — Phase 2 complete: Ingredient Logger
 **Commit**: `(uncommitted)`
 **Phase**: Phase 2 — Ingredient Logger

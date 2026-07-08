@@ -12,8 +12,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import { parseLabel, scaleToServings, ParsedLabel } from '@/utils/ocrParser';
+import { extractTextFromImage } from 'expo-text-extractor';
 import { insertEntry } from '@/utils/database';
 import { useAppStore } from '@/store/useAppStore';
 
@@ -83,7 +84,15 @@ export default function ScanLabelScreen() {
     setProcessing(true);
     setScreen('form');
 
-    const label = EMPTY_LABEL;
+    let label = EMPTY_LABEL;
+    try {
+      const lines = await extractTextFromImage(uri);
+      if (lines.length > 0) {
+        label = parseLabel(lines.join('\n'));
+      }
+    } catch {
+      label = EMPTY_LABEL;
+    }
 
     setParsed(label);
     applyParsed(label, parseFloat(servings) || 1);
